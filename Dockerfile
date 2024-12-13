@@ -1,24 +1,19 @@
 # Build stage
-FROM maven:3.8.5-openjdk-11 AS build
+FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 
-# Copy pom.xml and dependencies first (to leverage Docker caching)
-COPY pom.xml ./
+# Install dependencies only (skips copying files explicitly)
 RUN mvn dependency:go-offline
 
-# Copy the source code
-COPY src ./src
-RUN mvn clean package -DskipTests
+# Build the application directly in the container
+CMD ["mvn", "clean", "package", "-DskipTests"]
 
 # Runtime stage
-FROM openjdk:11-jre-slim
+FROM openjdk:17-jre-slim
 WORKDIR /app
-
-# Copy the generated JAR file
-COPY --from=build /app/target/*.jar app.jar
 
 # Expose the port
 EXPOSE 8080
 
 # Start the Spring Boot application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "target/*.jar"]
