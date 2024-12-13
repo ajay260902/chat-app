@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-@CrossOrigin
+@CrossOrigin(origins = "https://majestic-sprinkles-1df549.netlify.app")
 public class RoomController {
 
     private RoomRepository roomRepository;

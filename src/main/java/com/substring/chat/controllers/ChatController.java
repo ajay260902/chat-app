@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.time.LocalDateTime;
 
 @Controller
-@CrossOrigin
+@CrossOrigin(origins = "https://majestic-sprinkles-1df549.netlify.app")
 public class ChatController {
 
 
