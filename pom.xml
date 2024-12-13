@@ -73,6 +73,8 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<execFork>true</execFork>
+					<jdkHome>/path/to/java11</jdkHome> <!-- Replace with your Java 11 installation path -->
 				</configuration>
 			</plugin>
 		</plugins>
