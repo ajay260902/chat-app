@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.8.5-openjdk-17 AS build
+FROM maven:3.8.5-openjdk-11 AS build
 WORKDIR /app
 
 # Install dependencies only (skips copying files explicitly)
@@ -9,7 +9,7 @@ RUN mvn dependency:go-offline
 CMD ["mvn", "clean", "package", "-DskipTests"]
 
 # Runtime stage
-FROM openjdk:17-jre-slim
+FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Expose the port
