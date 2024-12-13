@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.time.LocalDateTime;
 
 @Controller
-@CrossOrigin(AppContants.FRONT_END_URL)
+@CrossOrigin
 public class ChatController {
 
 

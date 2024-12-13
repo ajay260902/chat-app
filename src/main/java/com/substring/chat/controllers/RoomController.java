@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-@CrossOrigin(AppContants.FRONT_END_URL)
+@CrossOrigin
 public class RoomController {
 
     private RoomRepository roomRepository;
