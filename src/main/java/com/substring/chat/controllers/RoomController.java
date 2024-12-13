@@ -16,12 +16,18 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/rooms")
+@RequestMapping(value = "/api/v1/rooms", method = RequestMethod.OPTIONS)
 @CrossOrigin(origins = "https://majestic-sprinkles-1df549.netlify.app")
 public class RoomController {
 
     private RoomRepository roomRepository;
-
+    public ResponseEntity<Void> handleOptions() {
+        return ResponseEntity.ok()
+                .header("Access-Control-Allow-Origin", "https://majestic-sprinkles-1df549.netlify.app")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+                .header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+                .build();
+    }
 
     public RoomController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
